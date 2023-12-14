@@ -21,7 +21,7 @@ function App() {
   async function downloadYoutube(ytURL, dlFormat) {
 
     const asdf = ytURL.split("&")[0];
-    const info = await fetch(`https://youtube-download.krepowo.my.id/info?url=${asdf}`).catch(() => {
+    const info = await fetch(`https://api.dlvid.link/info?url=${asdf}`).catch(() => {
       MySwal.fire({
         icon: 'error',
         title: 'Error!',
@@ -47,7 +47,7 @@ function App() {
       return;
     }
 
-    const downloadUrl = `https://youtube-download.krepowo.my.id/download?url=${asdf}&format=${dlFormat}`;
+    const downloadUrl = `https://api.dlvid.link/download?url=${asdf}&format=${dlFormat}`;
     const filename = `${ingfo.videoDetails.title}.${dlFormat}`;
 
     window.location.href = `${downloadUrl}&filename=${filename}`;
@@ -55,7 +55,7 @@ function App() {
     setHideBtn(false);
   }
   async function downloadInsta(insURL, dlFormat) {
-    const info = await fetch(`https://youtube-download.krepowo.my.id/downloadv2?url=${insURL}`);
+    const info = await fetch(`https://api.dlvid.link/downloadv2?url=${insURL}`);
     const ingfo = await info.json();
     if (ingfo.error) {
       MySwal.fire({
@@ -76,7 +76,7 @@ function App() {
     setHideBtn(false);
   }
   async function downloadFB(fbURL, dlFormat) {
-    const info = await fetch(`https://youtube-download.krepowo.my.id/downloadv2?url=${fbURL}`);
+    const info = await fetch(`https://api.dlvid.link/downloadv2?url=${fbURL}`);
     const ingfo = await info.json();
     if (ingfo.error) {
       MySwal.fire({
